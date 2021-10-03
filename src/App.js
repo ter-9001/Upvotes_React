@@ -50,9 +50,10 @@ class App extends Component {
   enviarComentario()
   {
 
-   (!arguments[0] || !arguments[1]) ?  alert("Erro: usuário e/ou comentário\n não digitados!!!!")
-    : alert("Enviando comentário!!!!"); 
-    
+        if(!arguments[0] || !arguments[1]) 
+        { //alert("Erro: usuário e/ou comentário\n não digitados!!!!")
+        }
+        else    
         {
                 let novoCometario = {
                   usuario: arguments[0],
@@ -82,11 +83,13 @@ class App extends Component {
                      <div className={"container-fluid"} style={{display: 'flex', flexWrap: 'row', justifyContent: 'center', backgroundColor: '#ff0000', margin:'5px'}}>
 
                          <div>
-                                    <input type={'text'} placeholder={'Digite usuário'} id="usuarioInput" />
+                                    <input type={'text'} placeholder={'Digite usuário'} id="usuarioInput" data-testid= "usuarioInput"  />
 
-                                    <input type={'text'} placeholder={'Digite comentário'} id="comentarioInput" />
+                                    <input type={'text'} placeholder={'Digite comentário'} id="comentarioInput" data-testid= "comentarioInput" />
 
-                                    <button className={'btn btn-success'}  onClick={() => this.enviarComentario(
+                                    
+
+                                    <button id="enviarCometario" data-testid="enviarCometario" className={'btn btn-success'}  onClick={() => this.enviarComentario(
                                       document.getElementById("usuarioInput").value, document.getElementById("comentarioInput").value)}
                                     > Enviar </button>
                          </div>
@@ -96,27 +99,26 @@ class App extends Component {
                
                     <div className={"container-fluid"} style={{display:'flex',justifyContent:'center'}}>
                        
-                              <div style={{display:'flex', flexDirection: 'column'}}> 
+                              <div data-testid="lista" style={{display:'flex', flexDirection: 'column'}}> 
                           
                                             {comentarios.map(
                                               (obj, index) => {
 
                                                 return(
-                                                <div className={'text-center'} 
+                                                <div key={index} className={'text-center'} 
                                                 style={{width:"300px",border:'0.4px solid #828080', marginTop:'15px'}}> 
 
                                                       <div style={{display:'flex', flexWrap:'row',
                                                     backgroundColor:'#309bb1', color:'white', justifyContent:'space-between'}}>
                                                         
-                                                          <p style={{maxWidth: '50%', marginBottom: '0', marginLeft: '15px'}} 
-                                                          className={'espaco_1linha'}> {obj.usuario} </p>
+                                                          <p data-testid={"usuario"} style={{maxWidth: '50%', marginBottom: '0', marginLeft: '15px'}} className={'espaco_1linha'}> {obj.usuario} </p>
 
                                                               <div style={{display:'flex', flexWrap:'row'}}>
 
-                                                                  <p style={{maxWidth: '90%',marginBottom: '0', marginRight: '15px'}} 
+                                                                  <p data-testid={"score"} style={{maxWidth: '90%',marginBottom: '0', marginRight: '15px'}} 
                                                                   > {obj.score} </p>
 
-                                                                  <p className={'darLike'} style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
+                                                                  <p data-testid={'darLike'}  style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
                                                                   onClick={() => this.scoreAumentar(index)}> Upvote here </p>
 
                                                               </div>
@@ -126,7 +128,7 @@ class App extends Component {
 
                                                       <div>
 
-                                                          <p style={{fontSize: '30px', color: '#828080'}} > {obj.comentario} </p>
+                                                          <p className={"comentario"} style={{fontSize: '30px', color: '#828080'}} > {obj.comentario} </p>
 
                                                       </div>
 
