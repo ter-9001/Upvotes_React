@@ -108,17 +108,17 @@ class App extends Component {
                                                 <div key={index} className={'text-center'} 
                                                 style={{width:"300px",border:'0.4px solid #828080', marginTop:'15px'}}> 
 
-                                                      <div style={{display:'flex', flexWrap:'row',
+                                                      <div id={"ptn"} data-testid={'ptn'} style={{display:'flex', flexWrap:'row',
                                                     backgroundColor:'#309bb1', color:'white', justifyContent:'space-between'}}>
                                                         
                                                           <p data-testid={"usuario"} style={{maxWidth: '50%', marginBottom: '0', marginLeft: '15px'}} className={'espaco_1linha'}> {obj.usuario} </p>
 
-                                                              <div style={{display:'flex', flexWrap:'row'}}>
+                                                              <div  style={{display:'flex', flexWrap:'row'}}>
 
                                                                   <p data-testid={"score"} style={{maxWidth: '90%',marginBottom: '0', marginRight: '15px'}} 
                                                                   > {obj.score} </p>
 
-                                                                  <p data-testid={'darLike'}  style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
+                                                                  <p data-testid={'darLike'} id={"darLike"} style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
                                                                   onClick={() => this.scoreAumentar(index)}> Upvote here </p>
 
                                                               </div>
