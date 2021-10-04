@@ -20,17 +20,17 @@ it("Adicionando dois elementos e checando tamanho da lista e existência dos com
                   fireEvent.change(comentario, { target: { value: "Primeiro Comentário" } });
                   fireEvent.click(enviar);
                   
-                  
+                  //Checando dados
                   expect(lista.children.length).toBe(1);
                   expect(screen.getByText("Usuário 1")).toBeTruthy();
                   expect(screen.getByText("Primeiro Comentário")).toBeTruthy();
 
-
+                  //Enviando dados do segundo comentário
                   fireEvent.change(usuario, { target: { value: "Usuário 2" } });
                   fireEvent.change(comentario, { target: { value: "Segundo Comentário" } });
                   fireEvent.click(enviar);
                   
-                  
+                  //Checando
                   expect(lista.children.length).toBe(2);
 });
 
@@ -60,11 +60,13 @@ it("Adicionando dois elementos e checando tamanho da lista e existência dos com
                   const darLike =  screen.queryByTestId("darLike");
                   const score =  screen.queryByTestId("score");
 
-                  //Verificando se o like foi dado
+                  //Dando like
                   fireEvent.click(darLike);
+                  
+                  //Verificando se o like foi dado
                   expect(score).toHaveTextContent('1');
 
-                  //Verificando se tres likes foram acrecentados
+                  //Dando e Verificando se tres likes foram acrecentados
                   fireEvent.click(darLike);
                   fireEvent.click(darLike);
                   fireEvent.click(darLike);
@@ -97,7 +99,7 @@ it("Adicionando dois elementos e checando tamanho da lista e existência dos com
                    const darLike =  screen.queryByTestId("darLike");
                    const score =  screen.queryAllByTestId("score")[0];
 
-                   //Verificando se dois likes foram dados no primeiro comentário
+                   //Verificando se cinco likes foram dados no primeiro comentário
                   fireEvent.click(darLike);
                   fireEvent.click(darLike);
                   fireEvent.click(darLike);
@@ -113,17 +115,16 @@ it("Adicionando dois elementos e checando tamanho da lista e existência dos com
                   //verificando se o segundo comentário foi adicionado
                   expect(lista.children.length).toBe(2);
 
-                  //Dando 3 likes ao novo comentário
+                  //Dando 4 likes ao novo comentário
                   const ultDarLike = screen.queryAllByTestId("darLike")[1];
                  
-                  //console.log(typeof(ultDarLike))
-
+                 
                   fireEvent.click(ultDarLike);
                   fireEvent.click(ultDarLike);
                   fireEvent.click(ultDarLike);
                   fireEvent.click(ultDarLike);
               
-                  //O primeiro comentário está com 2 likes e o segundo com 2
+                  //O primeiro comentário está com 5 likes e o segundo com 4
                   //Agora testando isso
 
                   const scores = screen.queryAllByTestId("score");
@@ -140,8 +141,8 @@ it("Adicionando dois elementos e checando tamanho da lista e existência dos com
                   expect(scores[0]).toHaveTextContent('5');
                   expect(scores[1]).toHaveTextContent('5');
 
-                   /*Se estiver tudo correto no sexto like no ultimo comentario as posições da lista vão se inverter, 
-                  logo, ao clicar no último elemento com id=darLike  o scores[0] terá 6, enquanto o scores[1] = 4*/
+                   /*Se estiver tudo correto ao ser dado o sexto like no último comentário,  as posições da lista vão se inverter, 
+                  logo, ao clicar no último elemento com id=darLike  o scores[0] terá 6, enquanto o scores[1] = 5*/
 
                   fireEvent.click(ultDarLike);
                   
