@@ -51,7 +51,7 @@ class App extends Component {
   {
 
         if(!arguments[0] || !arguments[1]) 
-        { //alert("Erro: usuário e/ou comentário\n não digitados!!!!")
+        { alert("Erro: usuário e/ou comentário\n não digitados!!!!")
         }
         else    
         {
@@ -79,7 +79,7 @@ class App extends Component {
     let comentarios = this.ordenar();
 
     return(
-               <div style={{backgroundColor:''}}>
+               <div>
                      <div className={"container-fluid"} style={{display: 'flex', flexWrap: 'row', justifyContent: 'center', backgroundColor: '#ff0000', margin:'5px'}}>
 
                          <div>
@@ -90,8 +90,8 @@ class App extends Component {
                                     
 
                                     <button id="enviarCometario" data-testid="enviarCometario" className={'btn btn-success'}  onClick={() => this.enviarComentario(
-                                      document.getElementById("usuarioInput").value, document.getElementById("comentarioInput").value)}
-                                    > Enviar </button>
+                                      document.getElementById("usuarioInput").value, document.getElementById("comentarioInput").value)}> 
+                                      Enviar </button>
                          </div>
 
                     </div>
@@ -108,7 +108,7 @@ class App extends Component {
                                                 <div key={index} className={'text-center'} 
                                                 style={{width:"300px",border:'0.4px solid #828080', marginTop:'15px'}}> 
 
-                                                      <div id={"ptn"} data-testid={'ptn'} style={{display:'flex', flexWrap:'row',
+                                                      <div style={{display:'flex', flexWrap:'row',
                                                     backgroundColor:'#309bb1', color:'white', justifyContent:'space-between'}}>
                                                         
                                                           <p data-testid={"usuario"} style={{maxWidth: '50%', marginBottom: '0', marginLeft: '15px'}} className={'espaco_1linha'}> {obj.usuario} </p>
