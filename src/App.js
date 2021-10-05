@@ -118,7 +118,7 @@ class App extends Component {
                                                                   <p data-testid={"score"} style={{maxWidth: '90%',marginBottom: '0', marginRight: '15px'}} 
                                                                   > {obj.score} </p>
 
-                                                                  <p data-testid={'darLike'} id={"darLike"} style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
+                                                                  <p data-testid={'darLike'} style={{marginBottom: '0', marginRight: '15px', fontSize: '10px'}} 
                                                                   onClick={() => this.scoreAumentar(index)}> Upvote here </p>
 
                                                               </div>
